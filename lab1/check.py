@@ -1,6 +1,6 @@
 from pyspark.testing import assertDataFrameEqual
 
-from lab1.common import run_solution, list_solutions
+from common import run_solution, list_solutions
 
 template_df = run_solution('solution_template')
 for solution in list_solutions('solutions'):

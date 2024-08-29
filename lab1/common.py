@@ -4,7 +4,6 @@ from os.path import isfile, join
 
 from pyspark.shell import spark
 from pyspark.sql import DataFrame
-from pyspark.testing import assertDataFrameEqual
 
 
 def view(name: str, target: DataFrame | str) -> DataFrame:
