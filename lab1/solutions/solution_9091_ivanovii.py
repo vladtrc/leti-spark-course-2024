@@ -18,7 +18,6 @@ def solve() -> DataFrame:
     view("player", player)
     view("player_result", player_result)
 
-    w = Window.partitionBy('flag')
     kda = player_result.groupBy('player_id').agg(
         (F.mean('gold') / 1000).alias('avg_gold'),
         F.count('assist').alias('assist_cnt')
