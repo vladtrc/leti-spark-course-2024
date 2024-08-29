@@ -1,7 +1,7 @@
 from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 
-from lab1.common import read_csv, view
+from common import read_csv
 
 
 #
@@ -18,5 +18,4 @@ def solve() -> DataFrame:
         (F.mean('gold') / 1000).alias('avg_gold'),
         F.count('assist').alias('assist_cnt')
     )
-    kda.show()
-    return None
+    return kda

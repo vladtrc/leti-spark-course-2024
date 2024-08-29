@@ -17,7 +17,7 @@ def read_csv(name) -> DataFrame:
         .format("com.databricks.spark.csv") \
         .option("header", "true") \
         .option("inferSchema", "true") \
-        .load(f"data/{name}.csv")
+        .load(f"lab1/data/{name}.csv")
 
 
 def run_solution(name):
@@ -28,5 +28,3 @@ def run_solution(name):
 def list_solutions(path):
     files = [f for f in listdir(path) if isfile(join(path, f))]
     return [f.replace('.py', '') for f in files if 'template' not in f]
-
-
