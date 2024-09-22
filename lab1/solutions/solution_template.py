@@ -16,6 +16,9 @@ from common import read_csv, view
 # говорят, например, в этой игре он играет на ЧЕТВЕРТОЙ позиции
 # вот в этой колонке требуется посчитать на какой позиции человек играл больше всего
 #
+# если игр однинаково на нескольких позициях
+# (10 игр на первой позиции и 10 на второй то выбираем НАИМЕНЬШУЮ - в данном случае первую)
+#
 # kda - среднее число kills/deaths/assists
 #
 # avg_gold - среднее количество gold
@@ -75,7 +78,7 @@ def solve() -> DataFrame:
     view("pos", """
         select 
             player_id, 
-            max(pos) as pos 
+            min(pos) as pos 
         from max_pos_cnt 
         where max_pos_cnt = pos_cnt
         group by player_id
