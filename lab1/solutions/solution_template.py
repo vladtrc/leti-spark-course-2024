@@ -97,6 +97,6 @@ def solve() -> DataFrame:
             join kda on kda.player_id = player.player_id
             join winrate on winrate.player_id = player.player_id
             join pos on pos.player_id = player.player_id
-        order by number_of_matches desc
+        order by number_of_matches desc, name asc
     """)
     return spark.sql("select * from res")

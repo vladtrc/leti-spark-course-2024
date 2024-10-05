@@ -11,4 +11,4 @@ for solution in list_solutions('lab1/solutions'):
         assertDataFrameEqual(df, template_df)
         print(solution, 'OK')
     except Exception as e:
-        print(f'{solution} WRONG')
+        print(f'{solution} WRONG', e)

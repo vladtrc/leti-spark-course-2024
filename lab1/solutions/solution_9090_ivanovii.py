@@ -58,7 +58,7 @@ def solve() -> DataFrame:
     view("pos", """
         select 
             player_id, 
-            max(pos) as pos 
+            min(pos) as pos 
         from max_pos_cnt 
         where max_pos_cnt = pos_cnt
         group by player_id
@@ -76,6 +76,6 @@ def solve() -> DataFrame:
             join kda on kda.player_id = player.player_id
             join winrate on winrate.player_id = player.player_id
             join pos on pos.player_id = player.player_id
-        order by number_of_matches desc
+        order by number_of_matches desc, name asc
     """)
     return spark.sql("select * from res")
