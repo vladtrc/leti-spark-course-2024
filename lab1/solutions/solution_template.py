@@ -87,7 +87,7 @@ def solve() -> DataFrame:
     # aggregate and prettify
     view("res", """
         select 
-            row_number() over (partition by 1 order by number_of_matches desc) AS N,
+            row_number() over (partition by 1 order by number_of_matches desc, name asc) AS N,
             name,
             pos.pos as pos,
             concat(avg_kills, '/', avg_death, '/', avg_assists) as kda,
@@ -97,6 +97,6 @@ def solve() -> DataFrame:
             join kda on kda.player_id = player.player_id
             join winrate on winrate.player_id = player.player_id
             join pos on pos.player_id = player.player_id
-        order by number_of_matches desc, name asc
+        order by N
     """)
     return spark.sql("select * from res")
