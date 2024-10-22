@@ -6,6 +6,8 @@ from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import udf, col
 from pyspark.sql.types import StringType
 
+from lab2.config import data_path
+
 
 def clear_solution_name(path: str) -> str:
     return path.split('solution_')[1].split('.py')[0]
@@ -25,7 +27,7 @@ class SparkContextCommon:
 
     def read_data(self) -> DataFrame:
         sc = self.spark.sparkContext
-        rdd = sc.wholeTextFiles('data')
+        rdd = sc.wholeTextFiles(data_path)
         columns_mapping = {
             '_1': 'path',
             '_2': 'content',
@@ -37,10 +39,15 @@ class SparkContextCommon:
         return df
 
 
+def list_solutions(path):
+    files = [f for f in listdir(path) if isfile(join(path, f))]
+    return [f.replace('.py', '') for f in files if 'template' not in f]
+
+
 def run_solution(name):
     spark = SparkSession.builder.master("local").getOrCreate()
     common = SparkContextCommon(spark)
-    module = importlib.import_module(f'solutions.{name}')
+    module = importlib.import_module(f'lab2.solutions.{name}')
     return getattr(module, 'solve')(common)
 
 
