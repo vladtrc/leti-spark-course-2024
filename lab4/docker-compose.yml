@@ -1,0 +1,15 @@
+version: '3'
+services:
+  kafka:
+    image: lensesio/fast-data-dev
+    container_name: kafka
+    ports:
+      - "3030:3030"  # Web UI
+      - "9092:9092"  # Kafka Broker
+      - "8081:8081"  # Schema Registry
+      - "8082:8082"  # Kafka REST Proxy
+      - "8083:8083"  # Kafka Connect Distributed
+      - "2181:2181"  # ZooKeeper
+    environment:
+      ADV_HOST: 127.0.0.1  # Advertised host for Kafka
+      RUNNING_SAMPLED_ZOOKEEPER: "true"  # Include Zookeeper in the setup
