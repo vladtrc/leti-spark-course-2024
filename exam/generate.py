@@ -27,7 +27,7 @@ questions = {
         "Отличия традиционной аналитики от аналитики больших данных",
         "Отличия SQL vs NoSQL СУБД",
         "NoSQL СУБД: документно-ориентированные, колоночные хранилища",
-        "NoSQL СУБД: графовые хранилища и ключ-значение"
+        "NoSQL СУБД: графовые хранилища и ключ-значение",
         "Масштабирование реляционной СУБД",
         "CAP теорема",
         "Традиционный подход организации хранилищ",
@@ -97,7 +97,6 @@ questions = {
         "Apache Spark: Отличия repartition и coalesce",
         
         # дубли до 13 (17 по куберу)
-        "Apache Spark: Преимущества Dataset API",
         "Apache Spark: Основные отличия между RDD, DataFrame и Dataset",
         "Apache Spark: Когда использовать RDD?",
         "Apache Spark: Transformations & Actions",
@@ -202,4 +201,4 @@ while chapter_questions:
 
 # Вывод билетов
 for i, ticket in enumerate(tickets, 1):
-    print(f"Билет {i}: {ticket}")
+    print(f"Билет {i}: {ticket[0]}, {ticket[1]}")
